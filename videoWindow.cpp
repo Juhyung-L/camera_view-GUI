@@ -25,8 +25,8 @@ void VideoWindow::start_timer()
 {
     notify_start();
     timer->start(rate);
-    showFullScreen();
-    show();
+    this->activateWindow();
+    this->showFullScreen();
 }
 
 void VideoWindow::stop_timer()

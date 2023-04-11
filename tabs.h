@@ -18,11 +18,11 @@ private:
     QCheckBox *undistort_checkbox;
     CameraViewWindow *camera_view_window;
     void init_ui();
-    void start_camera_view();
     bool undistortion_file_check();
 public:
     CameraViewTab(QWidget *parent);
     ~CameraViewTab();
+    void start_camera_view();
 };
 
 class CalibrationTab : public QWidget

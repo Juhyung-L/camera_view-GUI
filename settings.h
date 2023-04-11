@@ -2,23 +2,23 @@
 #define SETTINGS_H
 
 #include <opencv2/core/types.hpp>
-#include <filesystem>
+#include <experimental/filesystem>
 #include <vector>
 #include <string>
 
 namespace directories
 {
     // TODO: change YAML_DIR when this code is moved to the Jetson Nano
-    inline const std::filesystem::path YAML_DIR = "/home/kevin/Desktop/qt_creator_test/test/yaml";
-    inline const std::filesystem::path LEFT_CAMERA_DIR = "/dev/video90";
-    inline const std::filesystem::path RIGHT_CAMERA_DIR = "/dev/video91";
-    inline const std::filesystem::path LEFT_YAML_FILE = YAML_DIR / "distortion_left.yaml";
-    inline const std::filesystem::path RIGHT_YAML_FILE = YAML_DIR / "distortion_right.yaml";
+    inline const std::experimental::filesystem::path YAML_DIR = "/home/obsvis/Desktop/camera_view-GUI/yaml";
+    inline const std::experimental::filesystem::path LEFT_CAMERA_DIR = "/dev/video90";
+    inline const std::experimental::filesystem::path RIGHT_CAMERA_DIR = "/dev/video91";
+    inline const std::experimental::filesystem::path LEFT_YAML_FILE = YAML_DIR / "distortion_left.yaml";
+    inline const std::experimental::filesystem::path RIGHT_YAML_FILE = YAML_DIR / "distortion_right.yaml";
     inline void make_directory()
     {
-        if (!std::filesystem::exists(YAML_DIR))
+        if (!std::experimental::filesystem::exists(YAML_DIR))
         {
-            std::filesystem::create_directory(YAML_DIR);
+            std::experimental::filesystem::create_directory(YAML_DIR);
         }
     }
 }
@@ -27,10 +27,10 @@ class Camera
 {
 public:
     std::string name;
-    std::filesystem::path dir;
+    std::experimental::filesystem::path dir;
     Camera()
     {}
-    Camera(std::string name, std::filesystem::path dir)
+    Camera(std::string name, std::experimental::filesystem::path dir)
         :name(name), dir(dir)
     {}
     Camera(const Camera& camera) // copy constructor
@@ -48,8 +48,7 @@ namespace cameras
 namespace resolutions
 {
     inline const cv::Size CAPTURE_RESOLUTION(800, 600);
-    inline const cv::Size SCREEN_RESOLUTION(1280, 720);
-    inline const cv::Size CAMERA_VIEW_DISPLAY_RESOLUTION(640, 700);
-    inline const cv::Size CALIBRATION_DISPLAY_RESOLUTION(1280, 700);
+    inline const cv::Size CAMERA_VIEW_DISPLAY_RESOLUTION(640, 780);
+    inline const cv::Size CALIBRATION_DISPLAY_RESOLUTION(1280, 780);
 }
 #endif // SETTINGS_H

@@ -38,10 +38,9 @@ CameraViewWindow::CameraViewWindow(QWidget *parent)
 void CameraViewWindow::init_ui()
 {
     this->setWindowTitle("Camera-View");
-    this->setFixedSize(SCREEN_RESOLUTION.width, SCREEN_RESOLUTION.height);
 
-    left_view->setFixedSize(CAMERA_VIEW_DISPLAY_RESOLUTION.width, CAMERA_VIEW_DISPLAY_RESOLUTION.height);
-    right_view->setFixedSize(CAMERA_VIEW_DISPLAY_RESOLUTION.width, CAMERA_VIEW_DISPLAY_RESOLUTION.height);
+    // left_view->setFixedSize(CAMERA_VIEW_DISPLAY_RESOLUTION.width, CAMERA_VIEW_DISPLAY_RESOLUTION.height);
+    // right_view->setFixedSize(CAMERA_VIEW_DISPLAY_RESOLUTION.width, CAMERA_VIEW_DISPLAY_RESOLUTION.height);
     QHBoxLayout *HBL = new QHBoxLayout();
     HBL->addWidget(left_view);
     HBL->addWidget(right_view);

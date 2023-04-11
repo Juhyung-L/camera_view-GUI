@@ -1,13 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(test VERSION 0.1 LANGUAGES CXX)
+project(camera_view VERSION 0.1)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -17,25 +12,29 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 set(PROJECT_SOURCES
         main.cpp
-        mainWindow.h mainWindow.cpp
-        tabs.h tabs.cpp
-        settings.h
-        cameraStream.h cameraStream.cpp
-        videoWindow.h videoWindow.cpp
-        videoWidget.h videoWidget.cpp
-        cameraViewWindow.h cameraViewWindow.cpp
-        calibrationWindow.h calibrationWindow.cpp
-        fisheyeCameraModel.h fisheyeCameraModel.cpp
+        mainWindow.cpp
+        tabs.cpp
+        cameraStream.cpp
+        videoWindow.cpp
+        videoWidget.cpp
+        cameraViewWindow.cpp
+        calibrationWindow.cpp
+        fisheyeCameraModel.cpp
         )
 
-add_executable(test ${PROJECT_SOURCES})
+set(PROJECT_HEADERS
+	mainWindow.h
+	tabs.h
+	settings.h
+	cameraStream.h
+	videoWindow.h
+	videoWidget.h
+	cameraViewWindow.h
+	calibrationWindow.h
+	fisheyeCameraModel.h
+	)
 
-target_link_libraries(test PRIVATE Qt5::Widgets ${OpenCV_LIBS})
+add_executable(camera_view ${PROJECT_SOURCES} ${PROJECT_HEADERS})
 
-set_target_properties(test PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE
-)
+target_link_libraries(camera_view PRIVATE Qt5::Widgets ${OpenCV_LIBS} stdc++fs)
+

@@ -28,7 +28,6 @@ CalibrationWindow::CalibrationWindow(QWidget *parent)
 void CalibrationWindow::init_ui()
 {
     this->setWindowTitle("Calibration");
-    this->setFixedSize(resolutions::SCREEN_RESOLUTION.width, resolutions::SCREEN_RESOLUTION.height);
 
     QVBoxLayout *VBL = new QVBoxLayout(this);
     VBL->addWidget(calibration_view);

@@ -1,6 +1,6 @@
 #include <QVBoxLayout>
 #include <QString>
-#include <filesystem>
+#include <experimental/filesystem>
 #include <iostream>
 #include "tabs.h"
 
@@ -42,7 +42,6 @@ void CameraViewTab::init_ui()
         undistort_checkbox->setEnabled(true);
         undistort_checkbox->setChecked(true);
     }
-    start_camera_view(); // automatically start camera view
 }
 
 void CameraViewTab::start_camera_view()
@@ -59,8 +58,8 @@ void CameraViewTab::start_camera_view()
 
 bool CameraViewTab::undistortion_file_check()
 {
-    if (std::filesystem::exists(directories::LEFT_YAML_FILE) &&
-        std::filesystem::exists(directories::RIGHT_YAML_FILE))
+    if (std::experimental::filesystem::exists(directories::LEFT_YAML_FILE) &&
+        std::experimental::filesystem::exists(directories::RIGHT_YAML_FILE))
     {
         return true;
     }
@@ -87,7 +86,7 @@ CalibrationTab::CalibrationTab(QWidget *parent)
 
 void CalibrationTab::init_ui()
 {
-    calibration_window->set_frame_rate(5);
+    calibration_window->set_frame_rate(10);
     connect(calibration_button, &QPushButton::clicked, this, &CalibrationTab::start_calibration);
 
     QVBoxLayout *VBL = new QVBoxLayout(this);
