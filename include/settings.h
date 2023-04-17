@@ -9,7 +9,7 @@
 namespace directories
 {
     // TODO: change YAML_DIR when this code is moved to the Jetson Nano
-    inline const std::experimental::filesystem::path YAML_DIR = "/home/juhyung/Desktop/camera-view_GUI/yaml";
+    inline const std::experimental::filesystem::path YAML_DIR = std::experimental::filesystem::current_path() / "yaml";
     inline const std::experimental::filesystem::path LEFT_CAMERA_DIR = "/dev/video90";
     inline const std::experimental::filesystem::path RIGHT_CAMERA_DIR = "/dev/video91";
     inline const std::experimental::filesystem::path LEFT_YAML_FILE = YAML_DIR / "distortion_left.yaml";
